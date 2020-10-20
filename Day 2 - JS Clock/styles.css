@@ -1,8 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 html {
 	font-size: 10px;
 	font-family: sans-serif;
 }
-
+/* 
 body {
 	margin: 0px;
 	padding: 0px;
@@ -16,16 +22,106 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: #464646;
+} */
+
+.container {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.left {
+	align-self: flex-start;
+	width: 50%;
+	height: 100vh;
+	background: #b80c09;
+	/* position: absolute; */
+	right: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.test {
+	width: 319px;
+	height: 319px;
+	border-radius: 50px;
+	background: #b80c09;
+	box-shadow: 31px 31px 63px #910907, -31px -31px 63px #df0f0b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.refresh-container {
+	width: 6em;
+	height: 6em;
+	transform: translate(0, 150%);
+	border-radius: 50px;
+	background: #910907;
+	box-shadow: inset -8px 8px 16px #4b0504, inset 8px -8px 16px #d70d0a;
+	/* border-radius: 50px;
+	background: linear-gradient(315deg, #9b0a07, #830806);
+	box-shadow: -42px -42px 84px #900907, 42px 42px 84px #920907; */
+	/* border-radius: 50px;
+	background: #910907;
+	box-shadow: inset 20px 20px 60px #7b0806, inset -20px -20px 60px #a70a08; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.refresh {
+	width: 3em;
+	height: 3em;
+	/* transform: translate(0, 200%); */
+	/* filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(44deg) brightness(105%) */
+	/* contrast(101%); */
+}
+
+.right {
+	align-self: stretch;
+	width: 50%;
+	height: 100vh;
+	background: #091921;
+	/* position: absolute; */
+	left: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .clock {
-	width: 40rem;
-	height: 40rem;
-	padding: 2rem;
-	margin: 20px;
+	width: 350px;
+	height: 350px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: url(./assets/images/clock.png);
+	background-size: cover;
+	border: 4px solid #091921;
 	border-radius: 50%;
+	box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+		inset 0 -15px 15px rgba(255, 255, 255, 0.05), 0 15px 15px rgba(0, 0, 0, 0.3),
+		inset 0 15px 15px rgba(0, 0, 0, 0.3);
+	/* border-radius: 50%;
 	border: 20px solid black;
-	position: relative;
+	position: relative; */
+}
+
+.clock::before {
+	content: '';
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 50%;
+	z-index: 1000;
 }
 
 .clock-face {
@@ -36,31 +132,95 @@ body {
 	transform: translateY(-3px);
 }
 
+.transition-class {
+	transition: all 0.5s;
+}
+
 .hand {
-	width: 50%;
-	height: 5px;
+	/* width: 50%;
+	height: 6px;
 	background: black;
 	position: absolute;
+    top: 50%; */
 	top: 50%;
 	transform-origin: 100%;
 	transform: rotate(90deg);
-	transition: all 0.5s;
 	transition-timing-function: ease-in-out;
 	/* z-index: 10; */
 }
 
 .second-hand {
-	background: rgb(39, 160, 39);
+	background: white;
+	width: 37%;
+	height: 2px;
+	left: 13%;
+	position: absolute;
+	border-radius: 6px 0px 0 6px;
+	z-index: 12;
 }
 
 .minute-hand {
-	background: rgb(255, 44, 29);
-	width: 40%;
-	left: 10%;
+	background: white;
+	width: 30%;
+	height: 4px;
+	left: 20%;
+	position: absolute;
+	border-radius: 6px 0px 0 6px;
+	z-index: 11;
 }
 
 .hour-hand {
-	background: rgb(24, 67, 255);
-	width: 35%;
-	left: 15%;
+	background: #ff105e;
+	width: 25%;
+	height: 4px;
+	left: 25%;
+	position: absolute;
+	border-radius: 10px 0px 0px 10px;
+	z-index: 10;
+}
+
+@media all and (max-width: 764px) {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-size: 10px;
+		font-family: sans-serif;
+	}
+
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		align-content: space-around;
+	}
+
+	.left {
+		/* align-self: flex-start; */
+		width: 100%;
+		/* height: 50rem; */
+		background: #b80c09;
+		/* position: absolute; */
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.right {
+		flex: 1;
+		/* align-self: stretch; */
+		width: 100%;
+		/* height: 50rem; */
+		background: #091921;
+		/* position: absolute; */
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }

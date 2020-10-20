@@ -3,6 +3,12 @@ const minuteHand = document.querySelector('.minute-hand');
 const hourHand = document.querySelector('.hour-hand');
 
 function setDate() {
+    // console.log(secondHand.style.transform === 'rotate(444deg)');
+    // if(secondHand.style.transform === 'rotate(444deg)') {
+    //     secondHand.classList.remove('transition-class');
+    // } else if (secondHand.style.transform === 'rotate(90deg)') {
+    //     secondHand.classList.add('transition-class');
+    // }
     const now = new Date();
 
     const seconds = now.getSeconds();
@@ -16,7 +22,9 @@ function setDate() {
     const hours = now.getHours();
     const hourDegrees = ((hours / 12) * 360) + ((minutes/60)*30) + 90;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+
 }
+
 
 setInterval(setDate, 1000);
 setDate();
